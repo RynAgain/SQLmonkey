@@ -125,3 +125,25 @@ FROM my_table;</code></pre>
        END AS output
 FROM my_table;</code></pre>
 </div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>LEFT and RIGHT JOIN</h2>
+  <p>Returns all records from the left (or right) table and the matching records from the other table.</p>
+  <pre><code class="sql">-- LEFT JOIN Example
+SELECT a.column, b.column
+FROM tableA a
+LEFT JOIN tableB b ON a.id = b.id;
+
+-- RIGHT JOIN Example
+SELECT a.column, b.column
+FROM tableA a
+RIGHT JOIN tableB b ON a.id = b.id;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>OVER Clause Example</h2>
+  <p>Uses window functions to perform calculations over a set of rows related to the current row.</p>
+  <pre><code class="sql">SELECT 
+  employee,
+  salary,
+  AVG(salary) OVER (PARTITION BY department ORDER BY salary DESC) AS avg_department_salary
+FROM employees;</code></pre>
+</div>
