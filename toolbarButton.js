@@ -2,10 +2,22 @@ function initToolbarButton() {
     const button = document.createElement('button');
     button.innerHTML = '<span class="drag-handle" style="cursor: move; margin-right: 5px;">&#9776;</span>SQL Syntax';
     button.setAttribute('data-sql-syntax', 'true');
-    // Style the button using top and left so that it can be repositioned by dragging
+    // Default position: if position was previously stored, use it; otherwise, use a default near the top-right.
+    const savedPos = localStorage.getItem('sqlSyntaxButtonPosition');
+    if (savedPos) {
+        try {
+            const pos = JSON.parse(savedPos);
+            button.style.left = pos.left + 'px';
+            button.style.top = pos.top + 'px';
+        } catch (e) {
+            button.style.left = 'calc(100% - 120px)';
+            button.style.top = '20px';
+        }
+    } else {
+        button.style.left = 'calc(100% - 120px)';
+        button.style.top = '20px';
+    }
     button.style.position = 'fixed';
-    button.style.top = '20px';
-    button.style.left = 'calc(100% - 120px)';  // A bit adjusted for the handle
     button.style.zIndex = '1000';
     button.style.padding = '10px 15px';
     button.style.backgroundColor = '#007BFF';
@@ -49,6 +61,7 @@ function initToolbarButton() {
         // Constrain the button within the viewport
         newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - button.offsetWidth));
         newTop = Math.max(0, Math.min(newTop, window.innerHeight - button.offsetHeight));
+        
         button.style.left = newLeft + 'px';
         button.style.top = newTop + 'px';
     });
@@ -56,6 +69,12 @@ function initToolbarButton() {
     document.addEventListener('mouseup', (e) => {
         if (isDragging) {
             isDragging = false;
+            // Save the new position to localStorage
+            const pos = {
+                left: button.getBoundingClientRect().left,
+                top: button.getBoundingClientRect().top
+            };
+            localStorage.setItem('sqlSyntaxButtonPosition', JSON.stringify(pos));
             // Delay removal of dragging flag to prevent click event from firing immediately after drag
             setTimeout(() => {
                 button.dataset.dragging = "";

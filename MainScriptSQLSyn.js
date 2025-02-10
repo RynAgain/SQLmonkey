@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SQL Syntax Toolbar
 // @namespace    http://tampermonkey.net/
-// @version      0.103
+// @version      0.104
 // @description  Explore SQL syntax examples with a dynamic overlay
 // @author       Ryan Satterfield
 // @match        *://*/*
