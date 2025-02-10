@@ -1,0 +1,127 @@
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>SELECT Statement</h2>
+  <p>Retrieves data from one or more tables.</p>
+  <pre><code class="sql">SELECT column1, column2 FROM my_table WHERE condition;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>CREATE TABLE</h2>
+  <p>Creates a new table in the database.</p>
+  <pre><code class="sql">CREATE TABLE my_table (
+    id INT AUTOINCREMENT,
+    name STRING,
+    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP
+);</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>CREATE OR REPLACE TABLE</h2>
+  <p>Creates a new table or replaces an existing one.</p>
+  <pre><code class="sql">CREATE OR REPLACE TABLE my_table (
+    id INT,
+    name STRING
+);</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>ALTER TABLE</h2>
+  <p>Modifies an existing table structure.</p>
+  <pre><code class="sql">ALTER TABLE my_table ADD COLUMN email STRING;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>DROP TABLE</h2>
+  <p>Drops an existing table if it exists.</p>
+  <pre><code class="sql">DROP TABLE IF EXISTS my_table;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>UPDATE Statement</h2>
+  <p>Updates rows in a table.</p>
+  <pre><code class="sql">UPDATE my_table SET column = new_value WHERE condition;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>DELETE Statement</h2>
+  <p>Deletes rows from a table based on a condition.</p>
+  <pre><code class="sql">DELETE FROM my_table WHERE condition;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>MERGE Statement</h2>
+  <p>Merges data from a source table into a target table.</p>
+  <pre><code class="sql">MERGE INTO target_table USING source_table 
+ON target_table.id = source_table.id 
+WHEN MATCHED THEN UPDATE SET target_table.value = source_table.value 
+WHEN NOT MATCHED THEN INSERT (id, value) VALUES (source_table.id, source_table.value);</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>COPY INTO Command</h2>
+  <p>Loads data into a table from an external source.</p>
+  <pre><code class="sql">COPY INTO my_table 
+FROM @my_stage/file.csv 
+FILE_FORMAT = (TYPE = 'CSV', FIELD_OPTIONALLY_ENCLOSED_BY='"');</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>INSERT Statement</h2>
+  <p>Adds new rows into a table.</p>
+  <pre><code class="sql">INSERT INTO my_table (id, name) VALUES (1, 'John Doe');</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>USE WAREHOUSE</h2>
+  <p>Sets the virtual warehouse for executing queries.</p>
+  <pre><code class="sql">USE WAREHOUSE my_warehouse;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>ALTER WAREHOUSE</h2>
+  <p>Adjusts warehouse properties.</p>
+  <pre><code class="sql">ALTER WAREHOUSE my_warehouse SET WAREHOUSE_SIZE = 'LARGE';</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>USE DATABASE</h2>
+  <p>Selects the database for the session.</p>
+  <pre><code class="sql">USE DATABASE my_database;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>SHOW TABLES</h2>
+  <p>Displays all tables in the current database.</p>
+  <pre><code class="sql">SHOW TABLES;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>DESC TABLE</h2>
+  <p>Describes the structure of a table.</p>
+  <pre><code class="sql">DESC TABLE my_table;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>BETWEEN Expression</h2>
+  <p>Evaluates whether a value is within a range.</p>
+  <pre><code class="sql">SELECT * FROM my_table
+WHERE column BETWEEN value1 AND value2;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>RANK Function</h2>
+  <p>Assigns a rank to each row based on the order of a specified column. To rank within groups, use PARTITION BY.</p>
+  <pre><code class="sql">-- Basic ranking example:
+SELECT column, 
+       RANK() OVER (ORDER BY column DESC) AS rank
+FROM my_table;
+
+-- Ranking within partitions:
+SELECT category, column, 
+       RANK() OVER (PARTITION BY category ORDER BY column DESC) AS category_rank
+FROM my_table;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>Date Manipulation Functions</h2>
+  <p>Common date manipulation functions in Snowflake.</p>
+  <pre><code class="sql">SELECT DATEADD(day, 7, CURRENT_DATE()) AS next_week, 
+       DATEDIFF(day, '2025-01-01', CURRENT_DATE()) AS days_since_start, 
+       DATE_TRUNC('month', CURRENT_DATE()) AS first_day_of_month, 
+       DATE_PART('day', CURRENT_DATE()) AS current_day, 
+       LAST_DAY(CURRENT_DATE()) AS last_day_of_month 
+FROM my_table;</code></pre>
+</div>
+<div class="syntax-entry" style="margin-top:20px;" role="tabpanel">
+  <h2>CASE WHEN Statement</h2>
+  <p>Evaluates conditions and returns values based on the outcome.</p>
+  <pre><code class="sql">SELECT column, 
+       CASE 
+           WHEN condition1 THEN 'Result1'
+           WHEN condition2 THEN 'Result2'
+           ELSE 'Default'
+       END AS output
+FROM my_table;</code></pre>
+</div>

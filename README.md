@@ -10,25 +10,33 @@ The Snowflake SQL Explorer overlay is built as a single-page UI that appears on 
 - **Snippets**: A simple system for storing and managing your own code snippets.
 - **Settings**: Options for customizing the overlay appearance (e.g., theme toggling). _(This tab always appears last.)_
 
+**Note:** For improved maintainability, the content for each tab is stored in separate HTML files (found in the `tabs` folder) and dynamically loaded at runtime.
+
 ## Features
 
 - **Interactive Overlay**: Toggle the overlay using a draggable toolbar button that stays where you position it (its location is saved in local storage).
 - **Clearable Search Functionality**: Quickly filter content within any tab with a search box equipped with a “Clear” button to reset the filter.
 - **Syntax Highlighting**: SQL examples are automatically highlighted using Highlight.js for improved code readability.
 - **CASE WHEN Support**: Examples now include CASE WHEN statements to help illustrate conditional logic in SQL.
-- **Tab Organization**: Intuitive tab navigation with tabs for Syntax, Vocabulary, Snippets, and Settings.
+- **Tab Organization**: Intuitive tab navigation with separate tabs for Syntax, Vocabulary, Snippets, and Settings.
 - **Snippets Management**: Save custom code snippets into local storage and easily retrieve them later.
 - **Customizable Settings**: Toggle between Dark and Light themes to suit your environment.
+- **Modular Design**: The overlay splits each tab’s content into separate files for better maintainability.
 
 ## Installation
 
 1. Clone or download the project repository.
 2. Open the project in your favorite code editor.
-3. Ensure you are in the `github` directory.
+3. Ensure you are in the `c:/Source/SQLmonkey` directory.
 4. Integrate the overlay by including the provided userscripts:
    - **MainScriptSQLSyn.js**
    - **toolbarButton.js**
    - **overlay.js**
+5. The tab contents are stored in the `tabs` folder as separate HTML files:
+   - `tabs/syntaxTab.html`
+   - `tabs/vocabTab.html`
+   - `tabs/snippetsTab.html`
+   - `tabs/settingsTab.html`
 
 ## Usage
 
