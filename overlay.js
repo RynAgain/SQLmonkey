@@ -57,15 +57,16 @@
         contentContainer.style.padding = '20px';
         contentContainer.style.borderRadius = '8px';
         
-        // Header with search field and tab navigation (Syntax, Vocabulary, Settings, Snippets)
+        // Header with search field and tab navigation (Syntax, Vocabulary, Snippets, Settings)
+        // Settings tab is moved to be the last tab.
         var headerHTML = "<h1>Snowflake SQL Explorer</h1>" +
-                         "<p>Select a tab to view SQL syntax, common vocabulary, settings, or code snippets.</p>" +
-                         "<input type='text' id='syntax-search' aria-label='Search SQL content' placeholder='Search...' style='width:100%; padding:10px; margin-bottom:20px; border-radius:4px; border:1px solid #555;'>" +
+                         "<p>Select a tab to view SQL syntax, common vocabulary, code snippets, or settings.</p>" +
+                         "<input type='text' id='syntax-search' aria-label='Search SQL content' placeholder='Search...' style='width:100%; padding:10px; margin-bottom:20px; border-radius:4px; border:1px solid #555; color: #000;'>" +
                          "<div id='tab-nav' role='tablist' style='margin-bottom:20px;'>" +
                          "  <button class='tab-btn active' data-tab='syntax' role='tab' aria-selected='true' style='padding:8px 12px; margin-right:5px; cursor:pointer; border:none; border-radius:4px; background-color:#007BFF; color:#fff;'>Syntax</button>" +
                          "  <button class='tab-btn' data-tab='vocab' role='tab' aria-selected='false' style='padding:8px 12px; margin-right:5px; cursor:pointer; border:none; border-radius:4px; background-color:#555; color:#fff;'>Vocabulary</button>" +
-                         "  <button class='tab-btn' data-tab='settings' role='tab' aria-selected='false' style='padding:8px 12px; margin-right:5px; cursor:pointer; border:none; border-radius:4px; background-color:#555; color:#fff;'>Settings</button>" +
-                         "  <button class='tab-btn' data-tab='snippets' role='tab' aria-selected='false' style='padding:8px 12px; cursor:pointer; border:none; border-radius:4px; background-color:#555; color:#fff;'>Snippets</button>" +
+                         "  <button class='tab-btn' data-tab='snippets' role='tab' aria-selected='false' style='padding:8px 12px; margin-right:5px; cursor:pointer; border:none; border-radius:4px; background-color:#555; color:#fff;'>Snippets</button>" +
+                         "  <button class='tab-btn' data-tab='settings' role='tab' aria-selected='false' style='padding:8px 12px; cursor:pointer; border:none; border-radius:4px; background-color:#555; color:#fff;'>Settings</button>" +
                          "</div>";
         
         // Syntax Tab content (SQL syntax examples)
@@ -216,6 +217,18 @@
                         "<p>Filters groups created by GROUP BY, typically based on aggregate functions.</p>" +
                         "</div>";
     
+        // Snippets Tab content: a simple system for storing code snippets
+        var snippetsEntries = "";
+        snippetsEntries += "<div class='snippets-entry' style='margin-top:20px;' role='tabpanel'>" +
+                           "<h2>Code Snippets</h2>" +
+                           "<p>Add a snippet to your collection:</p>" +
+                           "<input type='text' id='snippet-title' placeholder='Snippet Title' style='width:100%; padding:8px; margin-bottom:5px; color: #000;'>" +
+                           "<textarea id='snippet-code' placeholder='Snippet Code' style='width:100%; padding:8px; margin-bottom:5px; color: #000;' rows='4'></textarea>" +
+                           "<button id='add-snippet' style='padding:8px 12px; border:none; border-radius:4px; background-color:#007BFF; color:#fff; cursor:pointer;'>Add Snippet</button>" +
+                           "<hr>" +
+                           "<div id='snippets-list'><p>No snippets stored yet.</p></div>" +
+                           "</div>";
+    
         // Settings Tab content: allow toggling overlay theme
         var settingsEntries = "";
         settingsEntries += "<div class='settings-entry' style='margin-top:20px;' role='tabpanel'>" +
@@ -228,24 +241,12 @@
                            "<button id='apply-theme' style='padding:8px 12px; border:none; border-radius:4px; background-color:#007BFF; color:#fff; cursor:pointer;'>Apply Theme</button>" +
                            "</div>";
     
-        // Snippets Tab content: a simple system for storing code snippets
-        var snippetsEntries = "";
-        snippetsEntries += "<div class='snippets-entry' style='margin-top:20px;' role='tabpanel'>" +
-                           "<h2>Code Snippets</h2>" +
-                           "<p>Add a snippet to your collection:</p>" +
-                           "<input type='text' id='snippet-title' placeholder='Snippet Title' style='width:100%; padding:8px; margin-bottom:5px;'>" +
-                           "<textarea id='snippet-code' placeholder='Snippet Code' style='width:100%; padding:8px; margin-bottom:5px;' rows='4'></textarea>" +
-                           "<button id='add-snippet' style='padding:8px 12px; border:none; border-radius:4px; background-color:#007BFF; color:#fff; cursor:pointer;'>Add Snippet</button>" +
-                           "<hr>" +
-                           "<div id='snippets-list'><p>No snippets stored yet.</p></div>" +
-                           "</div>";
-    
-        // Tabs container: four tabs - syntax, vocabulary, settings, snippets
+        // Tabs container: order is now Syntax, Vocabulary, Snippets, Settings (Settings always last)
         var tabsContainer = "<div id='tabs-container'>" +
                             "  <div id='syntax-tab' class='tab-content active' role='tabpanel'>" + syntaxEntries + "</div>" +
                             "  <div id='vocab-tab' class='tab-content' style='display:none;' role='tabpanel'>" + vocabEntries + "</div>" +
-                            "  <div id='settings-tab' class='tab-content' style='display:none;' role='tabpanel'>" + settingsEntries + "</div>" +
                             "  <div id='snippets-tab' class='tab-content' style='display:none;' role='tabpanel'>" + snippetsEntries + "</div>" +
+                            "  <div id='settings-tab' class='tab-content' style='display:none;' role='tabpanel'>" + settingsEntries + "</div>" +
                             "</div>";
     
         var fullHTML = headerHTML + tabsContainer;
