@@ -58,10 +58,13 @@
         contentContainer.style.borderRadius = '8px';
         
         // Header with search field and tab navigation (Syntax, Vocabulary, Snippets, Settings)
-        // Settings tab is moved to be the last tab.
+        // Added a "Clear" button next to the search input and forced text color in the input.
         var headerHTML = "<h1>Snowflake SQL Explorer</h1>" +
                          "<p>Select a tab to view SQL syntax, common vocabulary, code snippets, or settings.</p>" +
-                         "<input type='text' id='syntax-search' aria-label='Search SQL content' placeholder='Search...' style='width:100%; padding:10px; margin-bottom:20px; border-radius:4px; border:1px solid #555; color: #000;'>" +
+                         "<div style='display:flex; align-items:center; margin-bottom:20px;'>" +
+                         "  <input type='text' id='syntax-search' aria-label='Search SQL content' placeholder='Search...' style='flex:1; padding:10px; border-radius:4px; border:1px solid #555; color: #000;'>" +
+                         "  <button id='clear-search' style='margin-left:5px; padding:10px; border:none; border-radius:4px; background-color:#ccc; cursor:pointer;'>Clear</button>" +
+                         "</div>" +
                          "<div id='tab-nav' role='tablist' style='margin-bottom:20px;'>" +
                          "  <button class='tab-btn active' data-tab='syntax' role='tab' aria-selected='true' style='padding:8px 12px; margin-right:5px; cursor:pointer; border:none; border-radius:4px; background-color:#007BFF; color:#fff;'>Syntax</button>" +
                          "  <button class='tab-btn' data-tab='vocab' role='tab' aria-selected='false' style='padding:8px 12px; margin-right:5px; cursor:pointer; border:none; border-radius:4px; background-color:#555; color:#fff;'>Vocabulary</button>" +
@@ -336,8 +339,19 @@
         }
         initSnippetsTab();
         
-        // Use querySelector on contentContainer to reliably find the search input
+        // Event listener for Clear Search button
+        var clearSearchBtn = contentContainer.querySelector('#clear-search');
         var searchInput = contentContainer.querySelector('#syntax-search');
+        if (clearSearchBtn && searchInput) {
+            clearSearchBtn.addEventListener('click', function() {
+                searchInput.value = "";
+                // Trigger input event to clear any filtering
+                var event = new Event('input');
+                searchInput.dispatchEvent(event);
+            });
+        }
+        
+        // Use querySelector on contentContainer to reliably handle search input filtering
         if (searchInput) {
             searchInput.addEventListener('input', function() {
                 var filter = searchInput.value.toLowerCase();
