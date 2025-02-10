@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         SQL Syntax Toolbar
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.101
 // @description  Explore SQL syntax examples with a dynamic overlay
-// @author       Your Name
+// @author       Ryan Satterfield
 // @match        *://*/*
 // @grant        none
 // @require      https://raw.githubusercontent.com/RynAgain/SQLmonkey/refs/heads/main/overlay.js?token=GHSAT0AAAAAAC5MJZOYQMKGJNVEP6XTBOXEZ5JLUHQ
