@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SQL Syntax Toolbar
 // @namespace    http://tampermonkey.net/
-// @version      0.101
+// @version      0.102
 // @description  Explore SQL syntax examples with a dynamic overlay
 // @author       Ryan Satterfield
 // @match        *://*/*
@@ -10,6 +10,7 @@
 // @require      https://raw.githubusercontent.com/RynAgain/SQLmonkey/refs/heads/main/toolbarButton.js
 
 // @updateURL    https://raw.githubusercontent.com/RynAgain/SQLmonkey/refs/heads/main/MainScriptSQLSyn.js
+// @downloadURL  https://raw.githubusercontent.com/RynAgain/SQLmonkey/refs/heads/main/MainScriptSQLSyn.js
 
 // ==/UserScript==
 
