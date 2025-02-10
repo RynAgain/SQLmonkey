@@ -181,13 +181,24 @@
         syntaxEntries += "<div class='syntax-entry' style='margin-top:20px;' role='tabpanel'>" +
                          "<h2>Date Manipulation Functions</h2>" +
                          "<p>Common date manipulation functions in Snowflake.</p>" +
-                         "<pre><code class='sql'>SELECT DATEADD(day, 7, CURRENT_DATE()) AS next_week, \n" +
-                         "       DATEDIFF(day, '2025-01-01', CURRENT_DATE()) AS days_since_start, \n" +
-                         "       DATE_TRUNC('month', CURRENT_DATE()) AS first_day_of_month, \n" +
-                         "       DATE_PART('day', CURRENT_DATE()) AS current_day, \n" +
-                         "       LAST_DAY(CURRENT_DATE()) AS last_day_of_month \n" +
-                         "FROM my_table;</code></pre>" +
-                         "</div>";
+"<pre><code class='sql'>SELECT DATEADD(day, 7, CURRENT_DATE()) AS next_week, \n" +
+"       DATEDIFF(day, '2025-01-01', CURRENT_DATE()) AS days_since_start, \n" +
+"       DATE_TRUNC('month', CURRENT_DATE()) AS first_day_of_month, \n" +
+"       DATE_PART('day', CURRENT_DATE()) AS current_day, \n" +
+"       LAST_DAY(CURRENT_DATE()) AS last_day_of_month \n" +
+"FROM my_table;</code></pre>" +
+"</div>" +
+"<div class='syntax-entry' style='margin-top:20px;' role='tabpanel'>" +
+"  <h2>CASE WHEN Statement</h2>" +
+"  <p>Evaluates conditions and returns values based on the outcome.</p>" +
+"  <pre><code class='sql'>SELECT column, \n" +
+"       CASE \n" +
+"           WHEN condition1 THEN 'Result1'\n" +
+"           WHEN condition2 THEN 'Result2'\n" +
+"           ELSE 'Default'\n" +
+"       END AS output\n" +
+"FROM my_table;</code></pre>" +
+"</div>";
     
         // Vocabulary Tab content: common SQL vocabulary definitions
         var vocabEntries = "";

@@ -1,55 +1,60 @@
-# SQLmonkey - Snowflake SQL Syntax Explorer
+# SQLmonkey - Snowflake SQL Explorer
 
-SQLmonkey is a lightweight tool designed to help developers explore and understand Snowflake SQL syntax through a user-friendly overlay. This project provides a quick reference for common SQL operations with detailed examples and interactive search functionality.
+SQLmonkey is a lightweight tool designed to help developers explore and understand Snowflake SQL syntax through an interactive overlay. This tool offers an intuitive reference for common SQL operations, vocabulary, code snippets, and various customizable settings—all in one place.
 
 ## Overview
 
-The Snowflake SQL Syntax Explorer overlay presents a range of SQL commands and functions, including:
-- **Data Querying**: SELECT, INSERT, UPDATE, DELETE.
-- **Data Definition**: CREATE TABLE, ALTER TABLE, DROP TABLE.
-- **Advanced Operations**: MERGE, COPY INTO.
-- **Analytical Functions**: RANK, and date manipulation functions.
-
-The overlay can be toggled on demand, allowing you to reference syntax examples as you work on your queries.
+The Snowflake SQL Explorer overlay is built as a single-page UI that appears on demand. It provides multiple tabs for:
+- **Syntax**: Detailed examples of SQL commands, including CASE WHEN statements.
+- **Vocabulary**: Definitions of common SQL terms.
+- **Snippets**: A simple system for storing and managing your own code snippets.
+- **Settings**: Options for customizing the overlay appearance (e.g., theme toggling). _(This tab always appears last.)_
 
 ## Features
 
-- **Interactive Overlay**: Display syntax examples in a full-screen overlay.
-- **Search Functionality**: Filter syntax entries in real-time to quickly locate the example you need.
-- **Organized Layout**: Each SQL command is structured into dedicated sections for clarity.
-- **Customizable**: Easily extend or modify the syntax examples and styles to suit your needs.
-- **Future Enhancements**: Plans to include syntax highlighting, theme customization, and persistent preferences.
+- **Interactive Overlay**: Toggle the overlay using a draggable toolbar button that stays where you position it (its location is saved in local storage).
+- **Clearable Search Functionality**: Quickly filter content within any tab with a search box equipped with a “Clear” button to reset the filter.
+- **Syntax Highlighting**: SQL examples are automatically highlighted using Highlight.js for improved code readability.
+- **CASE WHEN Support**: Examples now include CASE WHEN statements to help illustrate conditional logic in SQL.
+- **Tab Organization**: Intuitive tab navigation with tabs for Syntax, Vocabulary, Snippets, and Settings.
+- **Snippets Management**: Save custom code snippets into local storage and easily retrieve them later.
+- **Customizable Settings**: Toggle between Dark and Light themes to suit your environment.
 
 ## Installation
 
 1. Clone or download the project repository.
 2. Open the project in your favorite code editor.
-3. Make sure you are in the directory `c:/Source/SQLmonkey`.
-4. Use the provided HTML/JavaScript integration to include the overlay in your working environment.
+3. Ensure you are in the `github` directory.
+4. Integrate the overlay by including the provided userscripts:
+   - **MainScriptSQLSyn.js**
+   - **toolbarButton.js**
+   - **overlay.js**
 
 ## Usage
 
-- **Toggle the Overlay**: Call the `toggleOverlay()` function to open or close the syntax explorer.
-- **Search Syntax**: Use the search input at the top of the overlay to filter syntax examples by keyword.
-- **Extend Examples**: Modify the `overlay.js` file to add new SQL syntax examples or update existing ones.
-
-## Customization
-
-- **Adding New Syntax**: Edit `overlay.js` to include additional SQL commands or adjust existing examples.
-- **Styling**: The overlay's design is defined with inline CSS in the JavaScript. Adjust color schemes, fonts, and spacing as needed.
-- **Integration**: Easily integrate this tool into your development environment to quick-reference SQL syntax while coding.
+- **Toggle the Overlay**: Click the draggable toolbar button labeled "SQL Syntax" to open or close the overlay.
+- **Drag the Toolbar Button**: Click and drag the button by its hamburger icon (the drag handle) to reposition it. Its position saves automatically.
+- **Search & Clear Search**: Use the search input at the top of the overlay to filter content. Click the “Clear” button to immediately reset the search.
+- **Switch Tabs**: Use the tab navigation to switch between SQL syntax examples (including a new CASE WHEN example), vocabulary definitions, code snippets, and settings.
+- **Add Snippets**: In the Snippets tab, enter a snippet title and code, then click "Add Snippet" to save your snippet in local storage.
+- **Customize Appearance**: In the Settings tab, select a theme (Dark or Light) and click "Apply Theme" to update the overlay's appearance.
 
 ## Future Enhancements
 
-- **Syntax Highlighting**: Integrate libraries like Highlight.js for improved code readability.
-- **Theme Support**: Add support for different visual themes and user customization.
-- **Local Storage**: Implement features to remember user preferences, such as the last used search filter.
-- **Extended Documentation**: More comprehensive guides and examples to further assist with Snowflake SQL usage.
+Future updates may include:
+- Improved accessibility with enhanced keyboard navigation.
+- Additional customization options such as font size adjustments and extra themes.
+- Options to export or print SQL examples or snippets.
+- Integration with more advanced snippet management libraries.
+
+## Contributing
+
+Contributions are welcome! Feel free to fork the repository and submit pull requests for additional features, bug fixes, or improvements.
 
 ## License
 
-MIT License
+This project is licensed under the MIT License.
 
 ---
 
-Enjoy using SQLmonkey, and feel free to contribute improvements or new syntax examples!
+Enjoy using SQLmonkey! For any questions or suggestions, please contribute or open an issue.
