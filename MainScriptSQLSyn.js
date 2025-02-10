@@ -6,7 +6,10 @@
 // @author       Your Name
 // @match        *://*/*
 // @grant        none
+// @require      https://raw.githubusercontent.com/RynAgain/SQLmonkey/refs/heads/main/overlay.js?token=GHSAT0AAAAAAC5MJZOYQMKGJNVEP6XTBOXEZ5JLUHQ
+// @require      https://raw.githubusercontent.com/RynAgain/SQLmonkey/refs/heads/main/toolbarButton.js?token=GHSAT0AAAAAAC5MJZOY6WZL2RDVA5A5IYS4Z5JLVCQ
 
+// @updateURL    https://raw.githubusercontent.com/RynAgain/SQLmonkey/refs/heads/main/MainScriptSQLSyn.js?token=GHSAT0AAAAAAC5MJZOZAXN3Z2KZBECF4ZHWZ5JLWIA
 // ==/UserScript==
 
 (function() {
