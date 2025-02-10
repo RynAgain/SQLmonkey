@@ -11,6 +11,8 @@
 
 // @updateURL    https://raw.githubusercontent.com/RynAgain/SQLmonkey/refs/heads/main/MainScriptSQLSyn.js
 
+// ==/UserScript==
+
 (function() {
     'use strict';
     // Initialize the toolbar button; this will be defined in toolbarButton.js
